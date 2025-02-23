@@ -13,23 +13,29 @@ def separatecsv():
     weaponlist = []
     
     filesfound = os.listdir(inputfolderpath)      #find all file names
+    if len(filesfound) == int(0):
+        print(f">>>No file(s) found in '{inputfolderpath}', please consider adding some\n")
+        quit()
     print("\n>>>Found " + str(len(filesfound)) + " weapon packs:")
     for number, file in enumerate(filesfound):
         print("\t" + str(number) + " - " + str(file))
-    print("\n>>>Please select weapon pack item you wish to convert with a space inbetween each one")
+    print("\n>>>Please select each weapon pack you wish to convert with a space inbetween each number")
     print(">>>Your choices can be in any order")
-    print(">>>For example: 2 1 4 16 8\n")
+    print(">>>If you wish to convert all, please enter 'all'")
+    print(">>>Example A: 2 1 4 16 8")
+    print(">>>Example B: all\n")
     selectedinput = input("Selection: ")
+    print("\n")
 
     for number, file in enumerate(filesfound):     #for every item in the list, try to make a file
-        if str(number) in selectedinput.split(" "):
+        if str(number) in selectedinput.split(" ") or "all" in selectedinput:
             try:
-                os.mkdir(outputfolderpath + file)
-                print(f"\n>>>Directory '{outputfolderpath + file}' created successfully.")
+                os.mkdir(outputfolderpath + str(file).replace(" ",""))
+                print(f"\n>>>Directory '{outputfolderpath + str(file).replace(" ","")}' created successfully.")
             except FileExistsError:
-                print(f"\n>>>Directory '{outputfolderpath + file}' already exists.")
+                print(f"\n>>>Directory '{outputfolderpath + str(file).replace(" ","")}' already exists.")
             except PermissionError:
-                print(f"\n>>>Permission denied: Unable to create '{outputfolderpath + file}'.")
+                print(f"\n>>>Permission denied: Unable to create '{outputfolderpath + str(file).replace(" ","")}'.")
             except Exception as e:
                 print(f"\n>>>An error occurred: {e}")
         
@@ -53,7 +59,7 @@ def separatecsv():
                 
                     for weaponstat in curline:
                         if weaponstat != "item":
-                            outputfilename = outputfolderpath + file + "/" + weaponstat.replace("\n","") + ".txt"
+                            outputfilename = outputfolderpath + str(file).replace(" ","") + "/" + weaponstat.replace("\n","") + ".txt"
                             with open(outputfilename, 'w') as curfile:      #create the txt file for each weapon
                                 curfile.write("\titem " + weaponstat + "\n")
                                 curfile.write("\t{\n")
@@ -63,7 +69,7 @@ def separatecsv():
                     continue
             
                 for weap in range(len(weaponlist)):          #for the length of the weapon list
-                    outputfilename = outputfolderpath + file + "/" + weaponlist[weaponcounter-1].replace("\n","") + ".txt"  #the current weapon file
+                    outputfilename = outputfolderpath + str(file).replace(" ","") + "/" + weaponlist[weaponcounter-1].replace("\n","") + ".txt"  #the current weapon file
                     
                     curfile = open(outputfilename, 'a')      #add to the existing file
                 
@@ -148,10 +154,10 @@ def separatecsv():
             
 
             for weap in range(len(weaponlist)):          #for the length of the weapon list
-                outputfilename = outputfolderpath + file + "/" + weaponlist[weap-1].replace("\n","") + ".txt"  #the current weapon file
+                outputfilename = outputfolderpath + str(file).replace(" ","") + "/" + weaponlist[weap-1].replace("\n","") + ".txt"  #the current weapon file
                 curfile = open(outputfilename, 'a')      #add to the existing file
                 curfile.write("\t}")    #add the weapon state name
-                print(">>>Finished weapon: " + weaponlist[weap-1])
+                print(">>>Finished weapon: " + weaponlist[weap])
                 curfile.close
                 
             

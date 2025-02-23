@@ -1,0 +1,26 @@
+item,Firecracker,Firecracker_Crafted,Molotov
+DisplayName,Firecrackers,Firecracker - Crafted,Molotov Cocktail
+DisplayCategory,Explosives,Explosives,Explosives
+OtherHandUse,TRUE,TRUE,TRUE
+MaxRange,10,10,8
+WeaponSprite,Firecracker,Firecracker_Crafted,Molotov
+Type,Weapon,Weapon,Weapon
+MinimumSwingTime,1.5,1.5,1.5
+SwingAnim,Throw,Throw,Throw
+UseSelf,TRUE,TRUE,TRUE
+SwingTime,1.5,1.5,1.5
+SwingAmountBeforeImpact,0.1,0.1,0.1
+PhysicsObject,MolotovCocktail,MolotovCocktail,MolotovCocktail
+MinDamage,0,0,0
+Weight,0.1,0.1,1.5
+MaxDamage,0,0,0
+OtherHandRequire,Lighter,Lighter,Lighter
+MaxHitCount,0,0,0
+FirePower,0,0,90
+FireRange,0,0,4
+Icon,Firecracker,Firework_Crafted,Molotov
+NoiseRange,80,60,
+EquipSound,FireCrackerEquip,FireCrackerEquip,MolotovCocktailEquip
+ExplosionSound,FireCrackerExplode,FireCrackerExplode,MolotovCocktailExplode
+SwingSound,FireCrackerThrow,FireCrackerThrow,MolotovCocktailThrow
+WorldStaticModel,Firecracker,Firecracker_Crafted,

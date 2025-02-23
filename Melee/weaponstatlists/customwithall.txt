@@ -1,0 +1,91 @@
+			DisplayName
+			Icon
+			IconColorMask
+			ColorBlue
+			ColorGreen
+			ColorRed
+			IconFluidMask
+			IconsForTexture
+			DisplayCategory
+			Categories
+			SubCategory
+			Tags
+			Type
+			StaticModel
+			WeaponSprite
+			WeaponSpritesByIndex
+			WorldStaticModel
+			WorldStaticModelsByIndex
+			
+			AttachmentType
+			IdleAnim
+			RunAnim
+			SwingAnim
+			CloseKillMove
+			
+			TwoHandWeapon
+			RequiresEquippedBothHands
+			
+			AimingMod
+			IsAimedHandWeapon
+			SwingAmountBeforeImpact
+			SwingTime
+			MinimumSwingTime
+			
+			CanBarricade
+			CanStoreWater
+			CantAttackWithLowestEndurance
+			SurvivalGear
+			DamageMakeHole
+			
+			AlwaysKnockdown
+			KnockBackOnNoDeath
+			KnockdownMod
+			BaseSpeed
+			ConditionLowerChanceOneIn
+			ConditionMax
+			critDmgMultiplier
+			CriticalChance
+			DamageCategory
+			DigType
+			DoorDamage
+			EnduranceMod
+			HeadCondition
+			HeadConditionLowerChanceMultiplier
+			HeadConditionMax
+			HitAngleMod
+			MaxDamage
+			MinDamage
+			MaxHitCount
+			MaxRange
+			MinRange
+			MinAngle
+			MetalValue
+			PushBackMod
+			RainFactor
+			ReplaceOnUseOn
+			Sharpness
+			TreeDamage
+			WeaponLength
+			WeaponWeight
+			Weight
+			
+			SplatBloodOnNoDeath
+			SplatNumber
+			SplatSize
+			
+			BreakSound
+			DoorHitSound
+			DropSound
+			EquipSound
+			HitFloorSound
+			HitSound
+			ImpactSound
+			SoundMap
+			SwingSound
+			UnequipSound
+			
+			Tooltip
+			ResearchableRecipes
+			OnBreak
+			OnCreate

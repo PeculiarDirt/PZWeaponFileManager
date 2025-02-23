@@ -11,139 +11,59 @@ outputfilepath = "csvexport/"
 weaponpackname = str        #user inputs name of weapon pack
 filelist = []               #current list of files read in the folder
 filesfound = []
+weaponstatslistfolder = "weaponstatlists/"
+weaponstatslistfile = ""
 
 weaponstatslist=[  
-    "item",
-    "DisplayName",
-    "Icon",
-    "DisplayCategory",
-    "SubCategory",
-    "Tags",
-    "Type",
-    "WeaponSprite",
-    "AttachmentType",
-    "IdleAnim",
-    "RunAnim",
-    "SwingAnim",
-    "WeaponReloadType",
-    "TwoHandWeapon",
-    "RequiresEquippedBothHands",
-    "AmmoBox",
-    "AmmoType",
-    "MagazineType",
-    "ClipSize",
-    "MaxAmmo",
-    "FireMode",
-    "FireModePossibilities",
-    "HaveChamber",
-    "InsertAllBulletsReload",
-    "ManuallyRemoveSpentRounds",
-    "RackAfterShoot",
-    "AimingMod",
-    "AimingPerkCritModifier",
-    "AimingPerkHitChanceModifier",
-    "AimingPerkMinAngleModifier",
-    "AimingPerkRangeModifier",
-    "AimingTime",
-    "ConditionLowerChanceOneIn",
-    "ConditionMax",
-    "CritDmgMultiplier",
-    "CriticalChance",
-    "DoorDamage",
-    "HitChance",
-    "ToHitModifier",
-    "IsAimedFirearm",
-    "IsAimedHandWeapon",
-    "JamGunChance",
-    "KnockBackOnNoDeath",
-    "KnockdownMod",
-    "MaxDamage",
-    "MinDamage",
-    "MaxHitCount",
-    "MaxRange",
-    "MinRange",
-    "MaxSightRange",
-    "MinSightRange",
-    "MetalValue",
-    "AngleFalloff",
-    "MinAngle",
-    "MultipleHitConditionAffected",
-    "PiercingBullets",
-    "ProjectileCount",
-    "ProjectileSpread",
-    "ProjectileWeightCenter",
-    "PushBackMod",
-    "Ranged",
-    "RangeFalloff",
-    "RecoilDelay",
-    "ReloadTime",
-    "ShareDamage",
-    "StopPower",
-    "SwingAmountBeforeImpact",
-    "SwingTime",
-    "MinimumSwingTime",
-    "UseEndurance",
-    "Weight",
-    "SplatBloodOnNoDeath",
-    "SplatNumber",
-    "SplatSize",
-    "BreakSound",
-    "BringToBearSound",
-    "ClickSound",
-    "DropSound",
-    "EjectAmmoSound",
-    "EjectAmmoStartSound",
-    "EjectAmmoStopSound",
-    "EquipSound",
-    "HitSound",
-    "ImpactSound",
-    "InsertAmmoSound",
-    "InsertAmmoStartSound",
-    "InsertAmmoStopSound",
-    "NPCSoundBoost",
-    "RackSound",
-    "ShellFallSound",
-    "SoundGain",
-    "SoundRadius",
-    "SoundVolume",
-    "SwingSound",
-    "UnequipSound",
-    "Bayonnet",
-    "GunLight",
-    "IronSight",
-    "Laser",
-    "RecoilPad",
-    "RedDot",
-    "x2Scope",
-    "x4Scope",
-    "x8Scope",
-    "ChokeTubeFull",
-    "ChokeTubeImproved",
+    "item"
 ]
+
 finalweaponstatslist = [[]]
 
-whatismissing = [
-    "AimingMod",
-    "IsAimedHandWeapon",
-    "ProjectileSpread",
-    "ProjectileWeightCenter",
-    "Bayonnet"
-    ] #found missing from original list
 
 def converttocsv(): 
+
     global inputfolderpath 
     filesfound = os.listdir(inputfolderpath)      #find all file names
+    if len(filesfound) == int(0):
+        print(f">>>No file(s) found in '{inputfolderpath}', please consider adding some\n")
+        quit()
     print("\n>>>Found " + str(len(filesfound)) + " weapon packs:")
     for number, file in enumerate(filesfound):
         print("\t" + str(number) + " - " + str(file))
-    print("\n>>>Please select each weapon pack you wish to convert with a space inbetween each one")
+    print("\n>>>Please select each weapon pack you wish to convert with a space inbetween each number")
     print(">>>Your choices can be in any order")
-    print(">>>For example: 2 1 4 16 8\n")
+    print(">>>If you wish to convert all, please enter 'all'")
+    print(">>>Example A: 2 1 4 16 8")
+    print(">>>Example B: all\n")
     selectedinput = input("Selection: ")
+    print("\n")
+    
+    statslistsfound = os.listdir(weaponstatslistfolder) #find all weapon stat lists
+    if len(statslistsfound) == int(0):
+        print(f">>>No file(s) found in '{weaponstatslistfolder}', please consider adding some\n")
+        quit()
+    print("\n>>>Found " + str(len(statslistsfound)) + " weapon stat lists:")
+    for number, file in enumerate(statslistsfound):
+        print("\t" + str(number) + " - " + str(file))
+    print("\n>>>Please select the organized weapon stat list that you want to use")
+    print(">>>Example: 2")
+    selectedinputlist = input("Selection: ")
+    print("\n")
+    weaponstatslistfile = statslistsfound[int(selectedinputlist)]
+    print(weaponstatslistfile)
+    
+    statslist = open(weaponstatslistfolder + weaponstatslistfile,"rt")      #open the file
+    for num, line in enumerate(statslist):          #add all weapon stats to the weaponstatslist list
+        if line.strip() == "":
+            continue
+        curstat = line.strip()
+        weaponstatslist.append(str(curstat))
+
 
 
     for number, file in enumerate(filesfound):     
-        if str(number) in selectedinput.split(" "):
+        if str(number) in selectedinput.split(" ") or "all" in selectedinput:
 
             weaponpackname = file
             inputfolderpath = "importseparated/" + weaponpackname

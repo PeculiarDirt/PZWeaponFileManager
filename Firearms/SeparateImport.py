@@ -18,16 +18,22 @@ def separateimport():
     selectedinput = str
     
     filesfound = os.listdir(inputfolderpath)      #find all file names
+    if len(filesfound) == int(0):
+        print(f">>>No file(s) found in '{inputfolderpath}', please consider adding some\n")
+        quit()
     print("\n>>>Found " + str(len(filesfound)) + " weapon packs:")
     for number, file in enumerate(filesfound):
         print("\t" + str(number) + " - " + str(file))
     print("\n>>>Please select each weapon pack you wish to convert with a space inbetween each number")
     print(">>>Your choices can be in any order")
-    print(">>>For example: 2 1 4 16 8\n")
+    print(">>>If you wish to convert all, please enter 'all'")
+    print(">>>Example A: 2 1 4 16 8")
+    print(">>>Example B: all\n")
     selectedinput = input("Selection: ")
+    print("\n")
     
     for number, file in enumerate(filesfound):     
-        if str(number) in selectedinput.split(" "):
+        if str(number) in selectedinput.split(" ") or "all" in selectedinput:
             outputfilename = outputfolderpath + file  
             weaponcounter = int(1)     
             try:
