@@ -60,15 +60,15 @@ def countimportstats():
                     #print("skipping line with no useful info")
                     continue
                 
-                if internalcomponent == True:
-                    #print("current line= " + str(line))
-                    #if readingweapon == True:
-                    if "}" in line.strip():
-                        #print("internal component end")
-                        internalcomponent = False
-                        continue
-                    else:
-                        continue
+                #if internalcomponent == True:
+                #    #print("current line= " + str(line))
+                #    #if readingweapon == True:
+                #    if "}" in line.strip():
+                #        #print("internal component end")
+                #        internalcomponent = False
+                #        continue
+                #    else:
+                #        continue
                 
                 if line.strip().startswith("item"):
                     if readingweapon == False:
@@ -96,10 +96,10 @@ def countimportstats():
                 
                         
                 if readingweapon:
-                    if "component" in line:
-                        #print("found internal component")
-                        internalcomponent = True
-                        continue
+                    #if "component" in line:
+                    #    #print("found internal component")
+                    #    internalcomponent = True
+                    #    continue
                     if "=" not in line:
                         continue
                     curline = line.strip()

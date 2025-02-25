@@ -1,3 +1,3 @@
 @echo on
-python "%~dp0ToFinalImport.py"
+python "%~dp0ImportSepToFinal.py"
 pause

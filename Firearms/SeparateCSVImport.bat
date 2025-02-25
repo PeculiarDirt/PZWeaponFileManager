@@ -1,3 +1,3 @@
 @echo on
-python "%~dp0SeparateCSV.py"
+python "%~dp0SeparateCSVImport.py"
 pause

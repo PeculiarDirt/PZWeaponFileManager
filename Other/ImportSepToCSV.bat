@@ -1,3 +1,3 @@
 @echo on
-python "%~dp0ToCSV.py"
+python "%~dp0ImportSepToCSV.py"
 pause
